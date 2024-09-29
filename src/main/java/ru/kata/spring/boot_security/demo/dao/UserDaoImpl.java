@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional(readOnly = true)
-    public User showUserById(int id) {
+    public User showUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -35,14 +35,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public void updateUser(int id, User user) {
+    public void updateUser(Long id, User user) {
         user.setId(id);
         entityManager.merge(user);
     }
 
     @Override
     @Transactional
-    public void deleteUserById(int id) {
+    public void deleteUserById(Long id) {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
     }

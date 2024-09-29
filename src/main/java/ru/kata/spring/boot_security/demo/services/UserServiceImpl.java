@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User showUserById(int id) {
+    public User showUserById(Long id) {
         return userDao.showUserById(id);
     }
 
@@ -33,12 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(int id, User user) {
+    public void updateUser(Long id, User user) {
         userDao.updateUser(id, user);
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(Long id) {
         userDao.deleteUserById(id);
     }
 }

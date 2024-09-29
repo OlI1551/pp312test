@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping("/{id}")
     public String showUser(HttpServletRequest request, Model model) {
         String id = request.getRequestURI().split("/")[2];
-        model.addAttribute("user", userService.showUserById(Integer.parseInt(id)));
+        model.addAttribute("user", userService.showUserById(Long.parseLong(id)));
         return "showUserById";
     }
 
@@ -56,7 +56,7 @@ public class UserController {
     @GetMapping("/{id}/edit")
     public String editUser(HttpServletRequest request, Model model) {
         String id = request.getRequestURI().split("/")[2];
-        model.addAttribute("user", userService.showUserById(Integer.parseInt(id)));
+        model.addAttribute("user", userService.showUserById(Long.parseLong(id)));
         return "editUser";
     }
 
@@ -68,14 +68,14 @@ public class UserController {
             return "editUser";
         }
         String id = request.getRequestURI().split("/")[2];
-        userService.updateUser(Integer.parseInt(id), user);
+        userService.updateUser(Long.parseLong(id), user);
         return "redirect:/users";
     }
 
     @PostMapping(value = "/{id}", params = "action=del")
     public String deleteUser(HttpServletRequest request) {
         String id = request.getRequestURI().split("/")[2];
-        userService.deleteUser(Integer.parseInt(id));
+        userService.deleteUser(Long.parseLong(id));
         return "redirect:/users";
     }
 }
