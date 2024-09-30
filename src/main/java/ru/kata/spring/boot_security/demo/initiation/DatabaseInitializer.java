@@ -13,7 +13,7 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 //ApplicationListener - интерфейс, который позволяет обрабатывать ApplicationEvent события
 //ContextRefreshedEvent - публикуется автоматически после поднятия контекста
@@ -61,7 +61,11 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         user.setUsername("user@mail.ru");
         user.setPassword("user");
         user.setRoles(new HashSet<>(userRoles));
+        System.out.println(user);
         userService.saveUser(user);
+
+        User user1 = userService.showUserById(2L);
+        System.out.println(user1);
 
         User user2 = new User();
         user2.setName("user2");

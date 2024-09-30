@@ -22,9 +22,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userDao.findByUsername(username);
-        if (user.isEmpty())
-            throw new UsernameNotFoundException(String.format("Пользователь c именем пользователя '%s'  не найден", username));
-        return new User(user.get());
+//        Optional<User> user = userDao.findByUsername(username);
+//        if (user.isEmpty())
+//            throw new UsernameNotFoundException(String.format("Пользователь c именем пользователя '%s'  не найден", username));
+//        return new User(user.get());
+
+        User user = userDao.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return user;
     }
 }

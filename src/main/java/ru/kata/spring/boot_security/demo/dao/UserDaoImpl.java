@@ -18,17 +18,31 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+//    @Override
+//    @Transactional(readOnly = true)
+//    @Query("Select u from User u left join fetch u.roles where u.username=:username")
+//    public Optional<User> findByUsername(String username) {
+//        TypedQuery<User> query = entityManager.createQuery(
+//                "SELECT u FROM User u WHERE u.username = :username", User.class); // запрос JPQL
+//        query.setParameter("username", username);
+//        try {
+//            return Optional.ofNullable(query.getSingleResult());
+//        } catch (NoResultException e) {
+//            return Optional.empty();
+//        }
+//    }
+
     @Override
     @Transactional(readOnly = true)
     @Query("Select u from User u left join fetch u.roles where u.username=:username")
-    public Optional<User> findByUsername(String username) {
+    public User findByUsername(String username) {
         TypedQuery<User> query = entityManager.createQuery(
                 "SELECT u FROM User u WHERE u.username = :username", User.class); // запрос JPQL
         query.setParameter("username", username);
         try {
-            return Optional.ofNullable(query.getSingleResult());
+            return query.getSingleResult();
         } catch (NoResultException e) {
-            return Optional.empty();
+            return null;
         }
     }
 
