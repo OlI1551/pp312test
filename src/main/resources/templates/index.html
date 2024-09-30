@@ -6,6 +6,21 @@
 <body>
 <h1>Welcome to Index PAGE!</h1>
 
+<div>
+    <th:block th:each="msg : ${messages}">
+        <h1 th:text="${msg}"></h1>
+    </th:block>
+</div>
+
+<br/>
+<hr/>
+
+<h1>
+<a href="user.html">Go to User Page</a>
+</br>
+</br>
+<a href="showAllUsers.html">Go to Admin Page</a>
+</h1>
 
 </body>
 </html>
