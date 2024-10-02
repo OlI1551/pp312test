@@ -53,7 +53,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         admin.setUsername("admin@mail.ru");
         admin.setPassword("admin");
         admin.setRoles(new HashSet<>(adminRoles));
-        userService.saveUser(admin);
+        userService.saveUser(admin, "ROLE_ADMIN");
 
         User user = new User();
         user.setName("user");
@@ -62,7 +62,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         user.setPassword("user");
         user.setRoles(new HashSet<>(userRoles));
         System.out.println(user);
-        userService.saveUser(user);
+        userService.saveUser(user, "ROLE_USER");
 
         User user1 = userService.showUserById(2L);
         System.out.println(user1);
@@ -73,7 +73,7 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         user2.setUsername("user2@mail.ru");
         user2.setPassword("user2");
         user2.setRoles(new HashSet<>(userRoles));
-        userService.saveUser(user2);
+        userService.saveUser(user2, "ROLE_USER");
 
         User user3 = new User();
         user3.setName("user3");
@@ -81,6 +81,6 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
         user3.setUsername("user3@mail.ru");
         user3.setPassword("user3");
         user3.setRoles(new HashSet<>(userRoles));
-        userService.saveUser(user3);
+        userService.saveUser(user3, "ROLE_USER");
     }
 }

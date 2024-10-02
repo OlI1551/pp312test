@@ -52,9 +52,12 @@
         <td>
             <a th:text="${user.Password}">user</a>
         </td>
-        <td>
-            <a th:text="${user.getRoles()}">user</a>
+<!--        <td>-->
+<!--            <a th:text="${user.getRoles()}">user</a>-->
+        <td th:each="role : ${user.getRoles()}"
+            th:text="${role.getName().replace('ROLE_', '') + ' '}">
         </td>
+<!--        </td>-->
     </tr>
 </table>
 

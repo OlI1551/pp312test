@@ -5,8 +5,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ru.kata.spring.boot_security.demo.dao.UserDao;
+import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,8 +34,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(User user, String role) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Set<Role> roles = new HashSet<>();
+        if (role.equals("ROLE_ADMIN")) {
+            roles.add(new Role(2L, "ROLE_ADMIN"));
+        }
+        roles.add(new Role(1L, "ROLE_USER"));
+        user.setRoles(roles);
+
         userDao.saveUser(user);
     }
 

@@ -27,12 +27,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.successUserHandler = successUserHandler;
     }
 
-    public WebSecurityConfig(boolean disableDefaults, UserDetailsServiceImpl userDetailsServiceImpl, SuccessUserHandler successUserHandler) {
-        super(disableDefaults);
-        this.userDetailsServiceImpl = userDetailsServiceImpl;
-        this.successUserHandler = successUserHandler;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
