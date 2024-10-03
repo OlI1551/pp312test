@@ -80,7 +80,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @PostMapping(value = "/{id}", params = "action=del")
+    @DeleteMapping(value = "/{id}", params = "action=del")
     public String deleteUser(HttpServletRequest request) {
         String id = request.getRequestURI().split("/")[2];
         userService.deleteUser(Long.parseLong(id));
