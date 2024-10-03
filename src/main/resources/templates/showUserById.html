@@ -29,7 +29,12 @@
 <br/>
 
 <p th:text="'ID: [ ' + ${user.getId()} + ' ]'">VALUE</p>
-<p th:text="${user.getName() + ' ' + user.getSurName()}">VALUE</p>
+<p th:text="${user.getName()}">VALUE</p>
+<p th:text="${user.getSurName()}">VALUE</p>
+<p th:text="${user.getUsername()}">VALUE</p>
+<p th:text="${user.getPassword()}">VALUE</p>
+<p th:each="role : ${user.getRoles()}"
+   th:text="${role.getName().replace('ROLE_', '') + ' '}"></p>
 
 <br/>
 <hr/>

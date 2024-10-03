@@ -32,18 +32,18 @@
 <hr/>
 <br/>
 
-<form th:method="POST" th:action="@{/create}" th:object="${user}">
-    <label for="name">Enter your name: </label>
+<form th:method="POST" th:action="@{/users/create}" th:object="${user}">
+    <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <div style="color: orange" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
     <br/>
     <br/>
-    <label for="surName">Enter your surName: </label>
+    <label for="surName">Enter surName: </label>
     <input type="text" th:field="*{surName}" id="surName"/>
     <div style="color: orange" th:if="${#fields.hasErrors('surName')}" th:errors="*{surName}">SurName error</div>
     <br/>
     <br/>
-    <label for="username">Enter your username: </label>
+    <label for="username">Enter username: </label>
     <input type="text" th:field="*{username}" id="username"/>
     <div style="color: orange" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
     <br/>

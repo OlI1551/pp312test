@@ -47,11 +47,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Long id, User user) {
+    public void updateUser(Long id, User user, String role) {
         user.setId(id);
-        user.setRoles(user.getRoles());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDao.saveUser(user);
+        Set<Role> roles = new HashSet<>();
+        if (role.equals("ROLE_ADMIN")) {
+            roles.add(new Role(2L, "ROLE_ADMIN"));
+        }
+        roles.add(new Role(1L, "ROLE_USER"));
+        user.setRoles(roles);
+
+        userDao.updateUser(id, user);
     }
 
     @Override

@@ -70,12 +70,13 @@ public class UserController {
     @PostMapping("/{id}")
     public String updateUser(@ModelAttribute("user") @Valid User user,
                              BindingResult bindingResult,
-                             HttpServletRequest request) {
+                             HttpServletRequest request,
+                             @RequestParam("role") String role) {
         if (bindingResult.hasErrors()) {
             return "editUser";
         }
         String id = request.getRequestURI().split("/")[2];
-        userService.updateUser(Long.parseLong(id), user);
+        userService.updateUser(Long.parseLong(id), user, role);
         return "redirect:/users";
     }
 
